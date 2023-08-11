@@ -15,6 +15,9 @@ const validate = (values) => {
   if(!values.email){
     errors.email = 'Este campo es Requerido';
   }
+  if(!values.select){
+    errors.select = 'Este campo es Requerido';
+  }
 
   return errors;
 }
@@ -25,11 +28,28 @@ function App() {
       <div className="bg-white p-10 rounded-md w-[700px]">
 
         <Formik
-          initialValues={{name: "",lastname: "",email: "",}}
+          initialValues={{name: "",lastname: "",email: "",select:"",}}
           validate={validate}
           onSubmit={(values) => console.log(values)}
         >
             <Form >
+              <div className="w-full">
+                <label className="flex font-semibold text-gray-500 text-lg"> Estado : 
+                <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
+                <ErrorMessage name="select" />
+                </span>
+                </label>
+                <Field
+                  className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
+                  as="select"
+                  name='select'
+                >
+                  <option value="">--Seleccione--</option>
+                  <option value="feliz">Feliz</option>
+                  <option value="triste">Triste</option>
+                </Field>
+
+              </div>
               <div className="w-full">
                 <label className="flex font-semibold text-gray-500 text-lg"> Nombre : 
                 <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
