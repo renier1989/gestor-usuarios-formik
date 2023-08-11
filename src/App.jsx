@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import TextInput from "./components/TextInput";
 import CheckboxInput from "./components/CheckboxInput";
 import SelectInput from "./components/SelectInput";
+import RadioInput from "./components/RadioInput";
 
 const validate = (values) => {
   const errors = {}
@@ -29,6 +30,9 @@ const validate = (values) => {
   if(!values.gender){
     errors.gender = 'Este campo es Requerido';
   }
+  if(!values.calification){
+    errors.calification = 'Este campo es Requerido';
+  }
 
   return errors;
 }
@@ -39,7 +43,7 @@ function App() {
       <div className="bg-white p-10 rounded-md w-[700px]">
 
         <Formik
-          initialValues={{name: "",lastname: "",email: "",select:"",username:"",accept:false,gender:''}}
+          initialValues={{name: "",lastname: "",email: "",select:"",username:"",accept:false,gender:'',calification:''}}
           validate={validate}
           onSubmit={(values) => console.log(values)}
         >
@@ -81,12 +85,28 @@ function App() {
               <div>
               <TextInput name="email" label="Correo" />
               </div>
-              <div>
+              
+              <div className="w-full ">
+                <label className="flex font-semibold text-gray-500 text-lg" >Como le parecio el Curso?
+                <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
+                <ErrorMessage name="calification" />
+                </span>
+                </label>
+                <div className="flex justify-between mt-4 text-lg text-gray-600 font-semibold">
+                <RadioInput name="calification" value="malo" label="Malo" />
+                <RadioInput name="calification" value="mejorable" label="Mejorable" />
+                <RadioInput name="calification" value="neutro" label="Neutro" />
+                <RadioInput name="calification" value="bueno" label="Bueno" />
+                <RadioInput name="calification" value="excelente" label="Excelente" />
+                </div>
+              </div>
+
+              <div className="w-full mt-3">
                 <CheckboxInput name="accept">
                   Aceptar Terminos y condiciones
                 </CheckboxInput>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center mt-10">
                 <button className="px-4 py-2 bg-green-600 rounded-md font-semibold text-white" type="submit">Enviar</button>
               </div>
             </Form>
