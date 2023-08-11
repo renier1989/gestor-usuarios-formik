@@ -32,7 +32,9 @@ function App() {
             <Form >
               <div className="w-full">
                 <label className="flex font-semibold text-gray-500 text-lg"> Nombre : 
-                <ErrorMessage className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold" name="name" />
+                <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
+                <ErrorMessage name="name" />
+                </span>
                 </label>
                 <Field
                   className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
@@ -43,7 +45,9 @@ function App() {
               </div>
               <div>
                 <label className="flex font-semibold text-gray-500 text-lg"> Apellido : 
-                <ErrorMessage className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold" name="lastname" />
+                <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
+                <ErrorMessage name="lastname" />
+                </span>
                 </label>
                 <Field
                 className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
@@ -54,7 +58,9 @@ function App() {
               </div>
               <div>
                 <label className="flex font-semibold text-gray-500 text-lg"> Correo : 
-                <ErrorMessage className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold" name="email" />
+                <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
+                <ErrorMessage name="email" />
+                </span>
                 </label>
                 <Field
                 className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
