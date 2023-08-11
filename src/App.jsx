@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import TextInput from "./components/TextInput";
+import CheckboxInput from "./components/CheckboxInput";
 
 const validate = (values) => {
   const errors = {}
@@ -34,7 +35,7 @@ function App() {
       <div className="bg-white p-10 rounded-md w-[700px]">
 
         <Formik
-          initialValues={{name: "",lastname: "",email: "",select:"",username:"",}}
+          initialValues={{name: "",lastname: "",email: "",select:"",username:"",accept:false}}
           validate={validate}
           onSubmit={(values) => console.log(values)}
         >
@@ -97,6 +98,11 @@ function App() {
                 autoComplete="off"
                 name='email'
                 />
+              </div>
+              <div>
+                <CheckboxInput name="accept">
+                  Aceptar Terminos y condiciones
+                </CheckboxInput>
               </div>
               <div className="flex items-center justify-center">
                 <button className="px-4 py-2 bg-green-600 rounded-md font-semibold text-white" type="submit">Enviar</button>
