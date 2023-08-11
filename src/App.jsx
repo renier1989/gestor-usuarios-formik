@@ -35,39 +35,42 @@ function App() {
         <form onSubmit={formik.handleSubmit}>
           <div className="w-full">
             <label className="flex font-semibold text-gray-500 text-lg"> Nombre : 
-            {formik.errors.name ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.name}</div> : null}
+            {formik.touched.name && formik.errors.name ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.name}</div> : null}
             </label>
             <input
               className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
               name="name"
               type="text"
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               value={formik.values.name}
               autoComplete="off"
             />
           </div>
           <div>
             <label className="flex font-semibold text-gray-500 text-lg"> Apellido : 
-            {formik.errors.lastname ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.lastname}</div> : null}
+            {formik.touched.lastname && formik.errors.lastname ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.lastname}</div> : null}
             </label>
             <input
             className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
               name="lastname"
               type="text"
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               value={formik.values.lastname}
               autoComplete="off"
             />
           </div>
           <div>
             <label className="flex font-semibold text-gray-500 text-lg"> Correo : 
-            {formik.errors.lastname ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.lastname}</div> : null}
+            {formik.touched.email && formik.errors.email ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.email}</div> : null}
             </label>
             <input
             className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
               name="email"
               type="text"
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               value={formik.values.email}
               autoComplete="off"
             />
