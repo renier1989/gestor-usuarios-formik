@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import TextInput from "./components/TextInput";
 
 const validate = (values) => {
   const errors = {}
@@ -6,6 +7,11 @@ const validate = (values) => {
     errors.name = 'Este campo es Requerido';
   }else if(values.name.length < 5){
     errors.name = 'El nombre es muy Corto';
+  }
+  if(!values.username){
+    errors.username = 'Este campo es Requerido';
+  }else if(values.username.length < 5){
+    errors.username = 'El username es muy Corto';
   }
   if(!values.lastname){
     errors.lastname = 'Este campo es Requerido';
@@ -28,11 +34,14 @@ function App() {
       <div className="bg-white p-10 rounded-md w-[700px]">
 
         <Formik
-          initialValues={{name: "",lastname: "",email: "",select:"",}}
+          initialValues={{name: "",lastname: "",email: "",select:"",username:"",}}
           validate={validate}
           onSubmit={(values) => console.log(values)}
         >
             <Form >
+              <div className="w-full">
+                <TextInput name="username" label="Nombre de Usuario" />
+              </div>
               <div className="w-full">
                 <label className="flex font-semibold text-gray-500 text-lg"> Estado : 
                 <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
