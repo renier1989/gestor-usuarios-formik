@@ -39,12 +39,9 @@ function App() {
             </label>
             <input
               className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-              name="name"
               type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.name}
               autoComplete="off"
+              {...formik.getFieldProps('name')}
             />
           </div>
           <div>
@@ -53,12 +50,9 @@ function App() {
             </label>
             <input
             className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-              name="lastname"
-              type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.lastname}
-              autoComplete="off"
+            type="text"
+            autoComplete="off"
+            {...formik.getFieldProps('lastname')}
             />
           </div>
           <div>
@@ -67,12 +61,9 @@ function App() {
             </label>
             <input
             className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-              name="email"
-              type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-              autoComplete="off"
+            type="text"
+            autoComplete="off"
+            {...formik.getFieldProps('email')}
             />
           </div>
           <div className="flex items-center justify-center">
