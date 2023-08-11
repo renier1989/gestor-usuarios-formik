@@ -1,4 +1,4 @@
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 
 const validate = (values) => {
   const errors = {}
@@ -20,56 +20,56 @@ const validate = (values) => {
 }
 
 function App() {
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      lastname: "",
-      email: "",
-    },
-    validate,
-    onSubmit: (values) => console.log(values),
-  });
   return (
     <div className="h-screen bg-gray-200 flex flex-col items-center justify-center">
       <div className="bg-white p-10 rounded-md w-[700px]">
-        <form onSubmit={formik.handleSubmit}>
-          <div className="w-full">
-            <label className="flex font-semibold text-gray-500 text-lg"> Nombre : 
-            {formik.touched.name && formik.errors.name ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.name}</div> : null}
-            </label>
-            <input
-              className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-              type="text"
-              autoComplete="off"
-              {...formik.getFieldProps('name')}
-            />
-          </div>
-          <div>
-            <label className="flex font-semibold text-gray-500 text-lg"> Apellido : 
-            {formik.touched.lastname && formik.errors.lastname ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.lastname}</div> : null}
-            </label>
-            <input
-            className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-            type="text"
-            autoComplete="off"
-            {...formik.getFieldProps('lastname')}
-            />
-          </div>
-          <div>
-            <label className="flex font-semibold text-gray-500 text-lg"> Correo : 
-            {formik.touched.email && formik.errors.email ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.email}</div> : null}
-            </label>
-            <input
-            className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-            type="text"
-            autoComplete="off"
-            {...formik.getFieldProps('email')}
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <button className="px-4 py-2 bg-green-600 rounded-md font-semibold text-white" type="submit">Enviar</button>
-          </div>
-        </form>
+
+        <Formik
+          initialValues={{name: "",lastname: "",email: "",}}
+          validate={validate}
+          onSubmit={(values) => console.log(values)}
+        >
+          {formik => 
+            <form onSubmit={formik.handleSubmit}>
+              <div className="w-full">
+                <label className="flex font-semibold text-gray-500 text-lg"> Nombre : 
+                {formik.touched.name && formik.errors.name ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.name}</div> : null}
+                </label>
+                <input
+                  className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
+                  type="text"
+                  autoComplete="off"
+                  {...formik.getFieldProps('name')}
+                />
+              </div>
+              <div>
+                <label className="flex font-semibold text-gray-500 text-lg"> Apellido : 
+                {formik.touched.lastname && formik.errors.lastname ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.lastname}</div> : null}
+                </label>
+                <input
+                className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
+                type="text"
+                autoComplete="off"
+                {...formik.getFieldProps('lastname')}
+                />
+              </div>
+              <div>
+                <label className="flex font-semibold text-gray-500 text-lg"> Correo : 
+                {formik.touched.email && formik.errors.email ? <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">{formik.errors.email}</div> : null}
+                </label>
+                <input
+                className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
+                type="text"
+                autoComplete="off"
+                {...formik.getFieldProps('email')}
+                />
+              </div>
+              <div className="flex items-center justify-center">
+                <button className="px-4 py-2 bg-green-600 rounded-md font-semibold text-white" type="submit">Enviar</button>
+              </div>
+            </form>
+          }
+        </Formik>
       </div>
     </div>
   );
