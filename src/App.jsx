@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import TextInput from "./components/TextInput";
 import CheckboxInput from "./components/CheckboxInput";
+import SelectInput from "./components/SelectInput";
 
 const validate = (values) => {
   const errors = {}
@@ -25,6 +26,9 @@ const validate = (values) => {
   if(!values.select){
     errors.select = 'Este campo es Requerido';
   }
+  if(!values.gender){
+    errors.gender = 'Este campo es Requerido';
+  }
 
   return errors;
 }
@@ -35,7 +39,7 @@ function App() {
       <div className="bg-white p-10 rounded-md w-[700px]">
 
         <Formik
-          initialValues={{name: "",lastname: "",email: "",select:"",username:"",accept:false}}
+          initialValues={{name: "",lastname: "",email: "",select:"",username:"",accept:false,gender:''}}
           validate={validate}
           onSubmit={(values) => console.log(values)}
         >
@@ -61,43 +65,21 @@ function App() {
 
               </div>
               <div className="w-full">
-                <label className="flex font-semibold text-gray-500 text-lg"> Nombre : 
-                <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
-                <ErrorMessage name="name" />
-                </span>
-                </label>
-                <Field
-                  className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-                  type="text"
-                  autoComplete="off"
-                  name='name'
-                />
+                <SelectInput label="Genero" name="gender">
+                  <option value="">--Seleccione--</option>
+                  <option value="masculino">Masculino</option>
+                  <option value="femenino">Femdenino</option>
+                  <option value="none">No Revelar</option>
+                </SelectInput>
+              </div>
+              <div className="w-full">
+              <TextInput name="name" label="Nombre" />
               </div>
               <div>
-                <label className="flex font-semibold text-gray-500 text-lg"> Apellido : 
-                <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
-                <ErrorMessage name="lastname" />
-                </span>
-                </label>
-                <Field
-                className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-                type="text"
-                autoComplete="off"
-                name='lastname'
-                />
+              <TextInput name="lastname" label="Apellido" />
               </div>
               <div>
-                <label className="flex font-semibold text-gray-500 text-lg"> Correo : 
-                <span className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
-                <ErrorMessage name="email" />
-                </span>
-                </label>
-                <Field
-                className="w-full border-[1px] border-gray-400 rounded-md px-2 py-1 outline-none mb-5 mt-2"
-                type="text"
-                autoComplete="off"
-                name='email'
-                />
+              <TextInput name="email" label="Correo" />
               </div>
               <div>
                 <CheckboxInput name="accept">

@@ -3,12 +3,12 @@ import { useField } from "formik";
 
 function CheckboxInput({ children, ...props }) {
   const [field, meta] = useField({ ...props, type: "checkbox" });
-  
+
   return (
     <div>
       <label>
-        <input type="checkbox" {...field} {...props} />
-        {children}
+        <input className="mr-2" type="checkbox" {...field} {...props} />
+        <span className="font-semibold">{children}</span>
       </label>
       {meta.touched && meta.error ? (
         <div className="flex  text-sm items-center ml-5 text-indigo-700 font-semibold">
