@@ -37,6 +37,10 @@ const validate = (values) => {
   return errors;
 }
 
+const sendForm = (values) => {
+  return console.log(values);
+}
+
 function App() {
   return (
     <div className="h-screen bg-gray-200 flex flex-col items-center justify-center">
@@ -45,7 +49,8 @@ function App() {
         <Formik
           initialValues={{name: "",lastname: "",email: "",select:"",username:"",accept:false,gender:'',calification:''}}
           validate={validate}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => sendForm(values)}
+          // onSubmit={(values) => console.log(values)}
         >
             <Form >
               <div className="w-full">
